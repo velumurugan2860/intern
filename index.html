@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Pop-Up</title>
+  <style>
+    /* Overlay */
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+    }
+
+    /* Pop-up box */
+    #popupBox {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      min-width: 300px;
+    }
+
+    #popupBox h2 {
+      margin-top: 0;
+    }
+
+    #closeBtn {
+      margin-top: 15px;
+      padding: 8px 12px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #openBtn {
+      padding: 10px 20px;
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="openBtn">Show Pop-up</button>
+
+  <!-- Pop-up Overlay -->
+  <div id="popupOverlay">
+    <div id="popupBox">
+      <h2>Dynamic Pop-Up</h2>
+      <p id="popupMessage">This is a pop-up message.</p>
+      <button id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupMessage = document.getElementById('popupMessage');
+    const openBtn = document.getElementById('openBtn');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Open popup with a dynamic message
+    openBtn.onclick = function () {
+      const userMessage = prompt("Enter a message for the pop-up:");
+      if (userMessage) {
+        popupMessage.textContent = userMessage;
+        popupOverlay.style.display = 'block';
+      }
+    };
+
+    // Close popup
+    closeBtn.onclick = function () {
+      popupOverlay.style.display = 'none';
+    };
+  </script>
+
+</body>
+</html>
